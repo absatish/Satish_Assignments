@@ -28,14 +28,15 @@ public class Student {
 	}
 	
 	@DynamoDBHashKey(attributeName="rollno")
-	public int getRollNumber() {
+	@DynamoDBAttribute(attributeName="rollno")
+	public int getRollno() {
 		return rollno;
 	}
-	
-	public void setRollNumber(int rollNumber) {
-		this.rollno = rollNumber;
+
+	public void setRollno(int rollno) {
+		this.rollno = rollno;
 	}
-	
+
 	@DynamoDBAttribute(attributeName="firstName")
 	public String getFirstName() {
 		return firstName;
