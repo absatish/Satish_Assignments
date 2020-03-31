@@ -1,7 +1,10 @@
 package student.model;
 
-public class Student {
+import org.springframework.stereotype.Service;
 
+@Service
+public class Student {
+//7675085539
 	int rollNumber;
 	String fName;
 	String lName;
@@ -37,6 +40,5 @@ public class Student {
 	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
 	
 }
