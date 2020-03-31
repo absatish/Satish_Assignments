@@ -13,6 +13,15 @@ public class Marks {
 		public Marks() {
 			super();
 		}
+		/**
+		 * @param rollNumber
+		 * @param telugu
+		 * @param hindi
+		 * @param english
+		 * @param maths
+		 * @param science
+		 * @param social
+		 */
 		public Marks(int rollNumber, int telugu, int hindi, int english, int maths, int science, int social) {
 			super();
 			this.rollNumber = rollNumber;
