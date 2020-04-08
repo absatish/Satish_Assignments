@@ -1,2 +1,9 @@
 server:
  port: 9676
+
+musicDirector:
+ Post: 
+  Core: 
+   url: http://localhost:9676
+  Register: 
+   url: musicDirector/register
