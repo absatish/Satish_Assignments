@@ -15,10 +15,5 @@ public class Error {
 	String summary;
 	String description;
 	
-	public Error(int code,String summary,String description) {
-		this.code=code;
-		this.summary=summary;
-		this.description=description;
-	}
 	
 }

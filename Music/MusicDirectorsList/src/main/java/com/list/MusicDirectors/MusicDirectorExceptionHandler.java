@@ -16,7 +16,7 @@ public class MusicDirectorExceptionHandler {
 	public ResponseEntity<Object> simleException(final Exception e,final WebRequest wr){
 		HttpStatus status=HttpStatus.NOT_FOUND;
 		//return ResponseEntity.status(status).body(e.getMessage()+","+e.getClass());
-		return ResponseEntity.status(status).body(new Error(404,e.getLocalizedMessage(),null));
+		return ResponseEntity.status(status).body(new Error(404,e.getLocalizedMessage(),e.getMessage()));
 	}
 	
 	@ExceptionHandler(value= {HttpClientErrorException.class})
