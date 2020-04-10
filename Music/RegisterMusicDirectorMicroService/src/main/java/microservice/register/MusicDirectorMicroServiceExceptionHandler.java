@@ -1,16 +1,14 @@
-package com.list.MusicDirectors;
+package microservice.register;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.context.request.WebRequest;
 
-import com.model.common.Error;
+import microservice.model.Error;
 
-@ControllerAdvice
-public class MusicDirectorExceptionHandler {
+public class MusicDirectorMicroServiceExceptionHandler {
 
 	@ExceptionHandler
 	public ResponseEntity<Object> simleException(final Exception e,final WebRequest wr){

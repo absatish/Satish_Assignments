@@ -1,0 +1,6 @@
+server:
+ port: 9676
+ 
+music:
+ core:
+  url: "http://localhost:8080"

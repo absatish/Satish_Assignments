@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.togglz.core.user.FeatureUser;
 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 
 public class DynamoDBConfiguration {	
@@ -20,7 +22,6 @@ public class DynamoDBConfiguration {
 		return builder.build();
 	}
 	
-	
-	
+
 	
 }
