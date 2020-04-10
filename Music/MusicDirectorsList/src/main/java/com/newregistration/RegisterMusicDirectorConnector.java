@@ -3,6 +3,7 @@ package com.newregistration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
 
@@ -12,8 +13,11 @@ import com.model.common.MusicDirector;
 @Service
 public class RegisterMusicDirectorConnector {
 	
+	@Autowired
 	private RestOperations restOperations;
-	private RegisterMusicDirectorURLService urlService=new RegisterMusicDirectorURLService("");
+	@Autowired
+	private RegisterMusicDirectorURLService urlService;
+	@Autowired
 	private HTTPConnectorService httpService;
 	
 	public RegisterMusicDirectorConnector() {
@@ -24,10 +28,13 @@ public class RegisterMusicDirectorConnector {
 		this.urlService=urlService;
 	}
 	
-	public boolean regMusicDirector(final MusicDirector musicDirector) {
-		System.out.println(urlService.getFinalURL());
-		restOperations.exchange(urlService.getFinalURL(), HttpMethod.POST,httpService.getHttpEntityJson(musicDirector),boolean.class);
-		return false;
+	public ResponseEntity<Boolean> regMusicDirector(final MusicDirector musicDirector) {
+		return restOperations.exchange(urlService.getFinalURL(), HttpMethod.POST,httpService.getHttpEntityJson(musicDirector),boolean.class);
+	}
+	
+	public boolean registration(MusicDirector musicDirector) {
+		System.out.println(musicDirector.getMusicDirectorName());
+		return true;
 	}
 
 }

@@ -1,13 +1,11 @@
-package com.model.common;
-
-//import org.springframework.http.HttpStatus;
+package microservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 public class Error {
 
@@ -15,5 +13,5 @@ public class Error {
 	String summary;
 	String description;
 	
-	
+	public Error() {}
 }

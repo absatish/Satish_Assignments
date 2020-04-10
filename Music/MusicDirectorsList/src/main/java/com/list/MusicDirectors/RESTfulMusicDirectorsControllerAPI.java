@@ -22,10 +22,13 @@ import com.newregistration.RegisterMusicDirectorConnector;
 public class RESTfulMusicDirectorsControllerAPI {
 	
 	@Autowired
+	MusicDirectorValidator validator;
+	
+	@Autowired
 	AWSCredentialsProvider credentails;
 
-	//@Autowired
-	RegisterMusicDirectorConnector connector=new RegisterMusicDirectorConnector();
+	@Autowired
+	RegisterMusicDirectorConnector connector;
 	/*
 	 * just for understanding purpose
 	 * to check whether Environment variables are accessible
@@ -37,8 +40,19 @@ public class RESTfulMusicDirectorsControllerAPI {
 	
 	@PostMapping("/register")
 	public String registerNewMusicDirector(@RequestBody MusicDirector musicDirector) throws Exception{
-		if(connector.regMusicDirector(musicDirector))
-			return "Registered Successfully..!";
-		throw new Exception("Something went wrong...Error while Registration..!");
+		if(validator.validateMusicDirector(musicDirector))
+		{
+			if(connector.regMusicDirector(musicDirector) != null)
+				return "Registered Successfully..!";
+			throw new Exception("Something went wrong...Error while Registration..!");
+		}
+		throw new Exception("Invalid Data..!");
+	}
+	
+	@PostMapping("/newregistration")
+	public void newRegistration(@RequestBody MusicDirector musicDirector) {
+		if(connector.registration(musicDirector)) {
+			System.out.println(true);
+		}
 	}
 }
