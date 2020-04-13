@@ -1,28 +1,17 @@
 package com.list.MusicDirectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.configuration.AWSConfiguration;
 import com.httpConnector.HTTPConnectorService;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-//import org.springframework.web.client.RestOperations;
-//import org.springframework.web.client.RestTemplate;
-//import org.springframework.web.util.DefaultUriBuilderFactory;
 import com.newregistration.RegisterMusicDirectorConnector;
 import com.newregistration.RegisterMusicDirectorURLService;
 
