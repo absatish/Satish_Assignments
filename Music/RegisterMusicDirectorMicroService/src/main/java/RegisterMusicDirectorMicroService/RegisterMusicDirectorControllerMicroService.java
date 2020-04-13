@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -34,6 +35,11 @@ public class RegisterMusicDirectorControllerMicroService{
 	@PostMapping("/register")
 	public boolean regMusicDirector(@RequestBody MusicDirector musicDirector){
 		return repository.registerNewMusicDirector(musicDirector);
+	}
+	
+	@GetMapping("/getdetails")
+	public MusicDirector getDetails(@RequestParam("ID") int ID) {
+		return repository.getMusicDirector(ID);
 	}
 	
 }

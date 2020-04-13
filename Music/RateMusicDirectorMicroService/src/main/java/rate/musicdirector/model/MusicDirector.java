@@ -1,4 +1,4 @@
-package com.model.common;
+package rate.musicdirector.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
