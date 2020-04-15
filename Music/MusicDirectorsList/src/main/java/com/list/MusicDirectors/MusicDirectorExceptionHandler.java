@@ -13,7 +13,7 @@ import com.model.common.Error;
 public class MusicDirectorExceptionHandler {
 
 	@ExceptionHandler
-	public ResponseEntity<Object> simleException(final Exception e,final WebRequest wr){
+	public ResponseEntity<Object> simpleException(final Exception e,final WebRequest wr){
 		HttpStatus status=HttpStatus.NOT_FOUND;
 		//return ResponseEntity.status(status).body(e.getMessage()+","+e.getClass());
 		return ResponseEntity.status(status).body(new Error(e.hashCode(),e.getLocalizedMessage(),e.getMessage()));

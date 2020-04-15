@@ -1,5 +1,6 @@
 package rate.musicdirector.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,12 +8,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class RatingDetails {
+
+public class MusicDirectorDetails {
 	
 	int musicDirectorID;
-	double rating;
-	UserProfile userProfile;
-	
-	public RatingDetails() {}
 
+	String musicDirectorName;
+
+	int noOfMovies;
+
+	int noOfAwards;
+
+	int noOfSongs;
+	
+	double rating;
+	
+	public MusicDirectorDetails() {}
 }

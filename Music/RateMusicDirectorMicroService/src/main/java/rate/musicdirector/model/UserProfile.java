@@ -14,16 +14,16 @@ import lombok.Setter;
 @DynamoDBTable(tableName = "UserProfile")
 public class UserProfile {
 	
-	@DynamoDBHashKey
+	@DynamoDBHashKey(attributeName = "userID")
 	int userID;
-	@DynamoDBAttribute(attributeName = "Name")
-	String Name;
-	@DynamoDBAttribute
-	char Email;
-	@DynamoDBAttribute
-	int Age;
-	@DynamoDBAttribute
-	String Address;
+	@DynamoDBAttribute(attributeName = "userName")
+	String userName;
+	@DynamoDBAttribute(attributeName = "emailID")
+	String emailID;
+	@DynamoDBAttribute(attributeName = "userAge")
+	int userAge;
+	@DynamoDBAttribute(attributeName = "userAddress")
+	String userAddress;
 
 	public UserProfile() {}
 }
