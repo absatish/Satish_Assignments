@@ -4,15 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
-public class RatingDetails {
-	
-	int musicDirectorID;
-	double rating;
-	UserProfile userProfile;
-	
-	public RatingDetails() {}
+public class Error {
 
+	int refCode;
+	String summary;
+	String description;
+	
+	public Error() {
+		
+	}
 }

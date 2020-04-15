@@ -1,5 +1,7 @@
 package microservice.model;
 
+import java.util.Map;
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
@@ -24,8 +26,8 @@ public class MusicDirector {
 	int noOfAwards;
 	@DynamoDBAttribute(attributeName = "noOfSongs")
 	int noOfSongs;
-	@DynamoDBIgnore
-	double userRating;
+	@DynamoDBAttribute(attributeName = "Ratings")
+	Map<String,Double> ratings;
 	
 	public MusicDirector() {}
 }
