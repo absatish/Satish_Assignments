@@ -1,0 +1,9 @@
+package rate.musicdirector.model;
+
+public class ModelTest {
+	
+	@Mock
+	MusicDirector musicDirector;
+	
+
+}

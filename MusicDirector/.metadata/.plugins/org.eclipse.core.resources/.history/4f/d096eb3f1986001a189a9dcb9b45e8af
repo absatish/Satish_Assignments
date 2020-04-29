@@ -1,0 +1,5 @@
+package rate.musicdirector.configuration;
+
+public class AWSConfigurationTest {
+
+}

@@ -1,0 +1,71 @@
+package com.consumer.services;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.spy;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.amazonaws.services.kms.model.NotFoundException;
+import com.consumer.models.MusicDirector;
+import com.consumer.models.RatingDetails;
+
+public class MusicDirectorConnectorTest {
+	
+	@Mock
+	MusicDirectorConnector sut;
+	
+	MusicDirectorConnector conSpyObj = spy(new MusicDirectorConnector());
+	
+	@Autowired
+	MusicDirectorConnector connector;
+	
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+	}
+
+	@Test
+	public void registerMusicDirectorTest() {
+		final MusicDirector musicDirector = mock(MusicDirector.class) ;
+		sut.regMusicDirector(musicDirector);
+		verify(sut).regMusicDirector(musicDirector);
+	}
+	
+	@Test
+	public void registerMusicDirectorExceptionTest() {
+		assertThat(sut.getMusicDirectorByID(101)).isNotNull();
+	}
+	
+	@Test
+	public void rateMusicDirectorTest() {
+		final RatingDetails ratingDetails = mock(RatingDetails.class);
+		sut.rateMusicDirector(ratingDetails);
+		verify(sut).rateMusicDirector(ratingDetails);
+	}
+	
+	@Test
+	public void updateMusicDirectorDetailsTest() {
+		sut.updateMusicDirector(100,100,100,100);
+		verify(sut).updateMusicDirector(100,100,100,100);
+	}
+	
+	@Test//(expected = NotFoundException.class)
+	public void getMusicDirectorByIdTest() {
+
+		when(sut.getMusicDirectorByID(100)).thenReturn(new MusicDirector(100,"SATISH",100,100,100,5.0,5));
+		assertThat(sut.getMusicDirectorByID(100)).isExactlyInstanceOf(MusicDirector.class);
+		//when(sut.getMusicDirectorByID(0)).thenThrow(NotFoundException.class);
+		
+		//assertThat(sut.getMusicDirectorByID(0)).isNotNull();
+		
+		assertThat(connector.getMusicDirectorByID()).isExactlyInstanceOf(MusicDirector.class);
+	}
+	
+}

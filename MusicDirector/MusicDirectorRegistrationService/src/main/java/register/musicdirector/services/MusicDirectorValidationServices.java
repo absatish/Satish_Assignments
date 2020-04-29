@@ -14,8 +14,8 @@ public class MusicDirectorValidationServices {
 	MusicDirectorServicesRepository repository;
 	
 	public boolean validateMusicDirector(final MusicDirector musicDirector) {
-		List<MusicDirector> musicDirectorsList = repository.getAll();
-		return !musicDirectorsList.stream().anyMatch(mDirector->mDirector.getMusicDirectorID()==musicDirector.getMusicDirectorID());
+		List<MusicDirector> musicDirectors = repository.getAllMusicDirectors();
+		return !musicDirectors.stream().anyMatch(mDirector->mDirector.getMusicDirectorID()==musicDirector.getMusicDirectorID());
 	}
 
 }

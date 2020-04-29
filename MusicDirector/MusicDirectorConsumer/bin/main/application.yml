@@ -2,5 +2,7 @@ server:
  port: 9676
  
 music:
- core:
+ registration:
   url: "http://localhost:8080"
+ rating:
+  url: http://localhost:7877

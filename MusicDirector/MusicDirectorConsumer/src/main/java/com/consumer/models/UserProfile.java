@@ -17,13 +17,13 @@ public class UserProfile {
 	@DynamoDBHashKey
 	int userID;
 	@DynamoDBAttribute(attributeName = "Name")
-	String Name;
+	String userName;
 	@DynamoDBAttribute
-	char Email;
+	String emailID;
 	@DynamoDBAttribute
-	int Age;
+	int userAge;
 	@DynamoDBAttribute
-	String Address;
+	String userAddress;
 
 	public UserProfile() {}
 }

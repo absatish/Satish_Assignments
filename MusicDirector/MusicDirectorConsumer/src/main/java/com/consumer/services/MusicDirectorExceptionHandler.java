@@ -11,6 +11,7 @@ import com.consumer.models.Error;
 
 @ControllerAdvice
 public class MusicDirectorExceptionHandler {
+	
 
 	@ExceptionHandler
 	public ResponseEntity<Object> simpleException(final Exception e,final WebRequest wr){

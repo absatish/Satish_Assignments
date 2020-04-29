@@ -1,0 +1,26 @@
+package rate.musicdirector.configuration;
+
+import org.junit.Before;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+
+public class AmazonDynamoDBConfigurationTest {
+	
+	private AmazonDynamoDBConfiguration config;
+	
+	@Mock
+	AmazonDynamoDB dynamoDB;
+	
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+	}
+	
+	@Test
+	public void DynamoDbConfigTest() {
+		
+	}
+
+}

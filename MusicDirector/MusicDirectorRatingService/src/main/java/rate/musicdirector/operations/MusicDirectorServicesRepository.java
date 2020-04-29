@@ -33,7 +33,7 @@ public class MusicDirectorServicesRepository {
 	@Autowired
 	MusicDirectorMapperServices objectMapper;
 	
-	public void rateMusicDirector(final RatingDetails ratingDetails, MusicDirector musicDirector) {
+	public void rateMusicDirectorAndSaveRatedUser(final RatingDetails ratingDetails, MusicDirector musicDirector) {
 		
 		final double userRating=ratingDetails.getRating();
 		final UserProfile ratedBy=ratingDetails.getUserProfile();
@@ -47,13 +47,11 @@ public class MusicDirectorServicesRepository {
 		
 	}
 
-	private void saveDetailsOfUser(UserProfile ratedBy) {
-		
+	private void saveDetailsOfUser(final UserProfile ratedBy) {
 		mapper.save(ratedBy);
-	
 	}
 
-	public MusicDirector getMusicDirector(int musicDirectorID) {
+	public MusicDirector getMusicDirectorById(int musicDirectorID) {
 		
 		return restTemplate.getForObject(urlService.getFinalUrl()+musicDirectorID, MusicDirector.class);
 	
@@ -66,12 +64,6 @@ public class MusicDirectorServicesRepository {
 		return avgRating;
 		
 	}
-	/*
-	 * 1,2,1+2,4,4+1,4+2,4+2+1,8,8+1,8+2  (1 to 10)
-	 * 8+2+1,8+4,8+4+1,8+2+4,8+2+4+1,16,16+1,16+2,16+1+2,16+4  (11 to 20)
-	 * 16+4+1,16+4+2,16+4+2+1,16+8,16+8+1,16+8+2,16+8+2+1,16+4+8,16+1+4+8,16+2+4+8 (21 to 30)
-	 * 16+1+2+4+8 (31)
-	 */
 
 	public boolean isUserAlreadyRatedMusicDirector(final int musicDirectorID, final int userID) {
 		
@@ -83,24 +75,24 @@ public class MusicDirectorServicesRepository {
 
 	private Map<String, Double> getRatings(int musicDirectorID) {
 		
-		return getMusicDirector(musicDirectorID).getRatings();
+		return getMusicDirectorById(musicDirectorID).getRatings();
 	}
 	
 	public int getRatingsCount(int musicDirectorID) {
 		
-		return getMusicDirector(musicDirectorID).getRatings().size();
+		return getMusicDirectorById(musicDirectorID).getRatings().size();
 		
 	}
 
 	public List<MusicDirectorDetails> getLeaderBoard() {
 		
 		List<MusicDirector> musicDirectors = getAllMusicDirectors();
-		List<MusicDirectorDetails> sortedMusicDirectors = getMusicDirectorsListWithRating(musicDirectors);
+		List<MusicDirectorDetails> sortedMusicDirectors = getMusicDirectorsWithRating(musicDirectors);
 		return sortedMusicDirectors;
 		
 	}
 	
-	private List<MusicDirectorDetails> getMusicDirectorsListWithRating(List<MusicDirector> musicDirectors) {
+	private List<MusicDirectorDetails> getMusicDirectorsWithRating(List<MusicDirector> musicDirectors) {
 		
 		return musicDirectors.stream()
 		.map(musicDirector->objectMapper.mapToMusicDirectorDetails(musicDirector))

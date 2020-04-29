@@ -55,11 +55,9 @@ public class MusicDirectorValidator {
 			errorMessage=errorMessage+"\nName should start with Capital Letter and contain only alphabets";
 			isValid=false;
 		}
-		
 		if(!isValid) {
 			throw new Exception(errorMessage);
 		}
 		return isValid;
 	}
-
 }

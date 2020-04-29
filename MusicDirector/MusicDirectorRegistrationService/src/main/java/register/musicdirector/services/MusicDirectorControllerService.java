@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,26 +29,31 @@ public class MusicDirectorControllerService{
 	
 	
 	@GetMapping("/home")
-	public String homePage() {
-		return credentialsProvider.getCredentials().getAWSAccessKeyId();
-		//return "Welcome to Registration MicroService HomePage..!";
+	public String getWelcomeMessage() {
+		//return credentialsProvider.getCredentials().getAWSAccessKeyId();
+		return "Welcome to Registration MicroService HomePage..!";
 	}
 	
 	@PostMapping("/register")
-	public boolean regMusicDirector(@RequestBody MusicDirector musicDirector){
+	public boolean registerMusicDirector(@RequestBody MusicDirector musicDirector){
 		
 		musicDirector.setRatings(new HashMap<String,Double>());
 		return repository.registerNewMusicDirector(musicDirector);
 	}
 	
+	@PutMapping("/update/{musicDirectorID}")
+	public boolean updateMusicDirectorProfile(final @PathVariable("musicDirectorID") int musicDirectorID, final @RequestParam("movies") int noOfMovies, final @RequestParam("awards") int noOfAwards, final @RequestParam("songs") int noOfSongs) {
+		return repository.updateMusicDirectorProfile(musicDirectorID,noOfMovies,noOfAwards,noOfSongs);
+	}
+	
 	@GetMapping("/getdetails")
-	public MusicDirector getDetails(@RequestParam("ID") int ID) {
-		return repository.getMusicDirector(ID);
+	public MusicDirector getMusicDirectorProfile(@RequestParam("ID") int ID) {
+		return repository.getMusicDirectorById(ID);
 	}
 	
 	@GetMapping("/getAll")
-	public List<MusicDirector> getAll(){
-		return repository.getAll();
+	public List<MusicDirector> getAllMusicDirectors(){
+		return repository.getAllMusicDirectors();
 	}
 	
 }

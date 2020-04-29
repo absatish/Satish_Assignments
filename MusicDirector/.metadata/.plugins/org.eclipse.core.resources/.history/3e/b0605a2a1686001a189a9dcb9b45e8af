@@ -1,0 +1,14 @@
+package rate.musicdirector.configuration;
+
+import org.junit.Before;
+
+public class AmazonDynamoDBConfigurationTest {
+	
+	private AmazonDynamoDBConfiguration;
+	
+	@Before
+	public void init() {
+		this.MockAnnotations(this.class);
+	}
+
+}

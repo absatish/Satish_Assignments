@@ -1,6 +1,7 @@
 package register.musicdirector.model;
 
-import java.util.HashMap;
+import java.util.Map;
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
@@ -25,7 +26,11 @@ public class MusicDirector {
 	@DynamoDBAttribute(attributeName = "noOfSongs")
 	int noOfSongs;
 	@DynamoDBAttribute(attributeName = "Ratings")
-	HashMap<String,Double> ratings;
+	Map<String,Double> ratings;
 	
 	public MusicDirector() {}
+	
+	public static MusicDirectorBuilder builder() {
+		return new MusicDirectorBuilder();
+	}
 }

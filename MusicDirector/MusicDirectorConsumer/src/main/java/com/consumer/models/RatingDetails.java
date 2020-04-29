@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class RatingDetails {
 	
-	int ID;
+	int musicDirectorID;
 	double rating;
 	UserProfile userProfile;
 	

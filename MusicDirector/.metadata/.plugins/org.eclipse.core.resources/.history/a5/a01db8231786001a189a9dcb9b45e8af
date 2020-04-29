@@ -1,0 +1,32 @@
+package rate.musicdirector.configuration;
+
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.amazonaws.profile.path.AwsDirectoryBasePathProvider;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+
+public class AmazonDynamoDBConfigurationTest {
+	
+	private AmazonDynamoDBConfiguration config;
+	
+	@Mock
+	AmazonDynamoDB dynamoDB;
+	
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+		config = new AmazonDynamoDBConfiguration();
+	}
+	
+	@Test
+	public void DynamoDbConfigTest() {
+		assertThat(config.dynamoDBMapper(dynamoDB)).isExactlyInstanceOf(DynamoDBMapper.class);
+	}
+
+}

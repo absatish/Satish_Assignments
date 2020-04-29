@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,24 +35,22 @@ public class MusicDirectorServicesController {
 	}
 	
 	@GetMapping("/details/{ID}")
-	public MusicDirectorDetails getMusicDirectorDetails(@PathVariable("ID") int musicDirectorID){
-		MusicDirector musicDirector = getMusicDirector(musicDirectorID);
+	public MusicDirectorDetails getMusicDirectorProfileById(@PathVariable("ID") int musicDirectorID){
+		MusicDirector musicDirector = getMusicDirectorById(musicDirectorID);
 		MusicDirectorDetails musicDirectorDetails = objectMapper.mapToMusicDirectorDetails(musicDirector);
 		return musicDirectorDetails;
 	}
 	
-	public MusicDirector getMusicDirector(int musicDirectorID){
-		return repository.getMusicDirector(musicDirectorID);
-		//restTemplate.getForEntity(urlService.getFinalUrl()+
-		//musicDirectorID, MusicDirector.class);
+	public MusicDirector getMusicDirectorById(int musicDirectorID){
+		return repository.getMusicDirectorById(musicDirectorID);
 	}
 	
-	@PatchMapping("/rate")
-	public MusicDirector rateMusicDirector(@RequestBody RatingDetails ratingDetails) throws Exception{
+	@PostMapping("/rate")
+	public MusicDirector rateMusicDirectorAndSaveRatedUser(@RequestBody RatingDetails ratingDetails) throws Exception{
 		validator.validateRatingDetails(ratingDetails);
-		MusicDirector musicDirector = getMusicDirector(ratingDetails.getMusicDirectorID());
-		repository.rateMusicDirector(ratingDetails,musicDirector);
-		return getMusicDirector(ratingDetails.getMusicDirectorID());
+		MusicDirector musicDirector = getMusicDirectorById(ratingDetails.getMusicDirectorID());
+		repository.rateMusicDirectorAndSaveRatedUser(ratingDetails,musicDirector);
+		return getMusicDirectorById(ratingDetails.getMusicDirectorID());
 	}
 	
 	@GetMapping("/leaderboard")

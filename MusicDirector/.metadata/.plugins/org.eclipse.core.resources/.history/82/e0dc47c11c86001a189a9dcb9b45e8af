@@ -1,0 +1,29 @@
+package rate.musicdirector.configuration;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+
+public class AWSConfigurationTest {
+	
+	private AWSConfiguration awsConfig;
+	
+	@Mock
+	AWSCredentialsProvider credentials;
+	
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+		awsConfig = new AWSConfiguration();
+	}
+	
+	@Test
+	public void AmazonDynamoDbTest() {
+		dynamoDB.
+	}
+
+}

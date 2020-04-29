@@ -1,0 +1,25 @@
+package rate.musicdirector.model;
+
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class ModelTest {
+	
+	@Mock
+	MusicDirector musicDirector;
+	
+	@Before
+	public void init() {
+		MockitoAnnotations.initMocks(this);
+	}
+	
+	@Test
+	public void MusicDirectorTest() {
+		assertThat(musicDirector.getMusicDirectorID()).isEqualTo(0);
+		assertThat(musicDirector.getMusicDirectorName()).isEqualTo(null);
+	}
+	
+	
+
+}

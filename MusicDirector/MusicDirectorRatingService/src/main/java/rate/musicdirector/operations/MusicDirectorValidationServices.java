@@ -18,7 +18,7 @@ public class MusicDirectorValidationServices {
 		int musicDirectorID = ratingDetails.getMusicDirectorID();
 		double rating = ratingDetails.getRating();
 		UserProfile userProfile = ratingDetails.getUserProfile();
-		MusicDirector musicDirector=repository.getMusicDirector(musicDirectorID);
+		MusicDirector musicDirector=repository.getMusicDirectorById(musicDirectorID);
 		if(musicDirector==null)
 			throw new Exception("No Music Director found with ID : "+musicDirectorID);
 		if(rating<0.0 || rating>5.0)

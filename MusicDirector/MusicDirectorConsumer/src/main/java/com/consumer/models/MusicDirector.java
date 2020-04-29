@@ -14,7 +14,8 @@ public class MusicDirector {
 	int noOfMovies;
 	int noOfAwards;
 	int noOfSongs;
-	double userRating;
+	double Rating;
+	int noOfRatings;
 	
 	public MusicDirector() {}
 }

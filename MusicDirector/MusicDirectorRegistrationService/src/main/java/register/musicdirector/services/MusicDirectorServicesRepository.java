@@ -1,6 +1,7 @@
 package register.musicdirector.services;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class MusicDirectorServicesRepository {
 	
 	@Autowired
 	MusicDirectorValidationServices validations;
+	
 
 	public boolean registerNewMusicDirector(MusicDirector musicDirector){
 		boolean isMusicDirectorAlreadyRegistered = validations.validateMusicDirector(musicDirector);
@@ -27,13 +29,21 @@ public class MusicDirectorServicesRepository {
 		return isMusicDirectorAlreadyRegistered;
 	}
 
-	public MusicDirector getMusicDirector(int ID) {
+	public MusicDirector getMusicDirectorById(int ID) {
 		return mapper.scan(MusicDirector.class, new DynamoDBScanExpression()).stream().filter(md->md.getMusicDirectorID()==ID).findFirst().get();
 	}
 
-	public List<MusicDirector> getAll() {
+	public List<MusicDirector> getAllMusicDirectors() {
 		
 		return mapper.scan(MusicDirector.class, new DynamoDBScanExpression()).stream().collect(Collectors.toList());
 		
+	}
+
+	public boolean updateMusicDirectorProfile(int musicDirectorID, int noOfMovies, int noOfAwards, int noOfSongs) {
+		Map<String, Double> ratings = getMusicDirectorById(musicDirectorID).getRatings();
+		String musicDirectorName = getMusicDirectorById(musicDirectorID).getMusicDirectorName();
+		MusicDirector updatedMusicDirector = MusicDirector.builder().MusicDirectorID(musicDirectorID).MusicDirectorName(musicDirectorName).NoOfMovies(noOfMovies).NoOfSongs(noOfSongs).NoOfAwards(noOfAwards).Ratings(ratings).build();
+		mapper.save(updatedMusicDirector);
+		return true;
 	}
 }
